@@ -1,4 +1,4 @@
 # RPS
 Rock Paper Scissors
-# Game of rock paaper scissors
+# Game of rock paper scissors
 # Rock > scissors > paper
