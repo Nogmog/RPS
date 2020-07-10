@@ -16,19 +16,34 @@ function computerPlay(){
 function playerPlay(){
     let playerChoice = prompt("Rock, paper, scissors!"); // Unknown error
     playerChoice = playerChoice.toLowerCase();
-    return playerChoice
+    return playerChoice;
+}
+
+function verInput(input){
+    if(choices.includes(input) == true){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function winner(pc, player){
-    return
+    return;
     }
     
 
 function game(){
+    let plr = playerPlay();
+    let ver = verInput(plr)
+
+    while (ver == false){
+        alert("Incorrect input. Try again!")
+        plr = playerPlay();
+        ver = verInput(plr)
+    }
+
     let pc = computerPlay();
     //console.log("Computer played: "+pc)
-    let plr = playerPlay();
-
     result = winner(pc, plr);
 }
 
