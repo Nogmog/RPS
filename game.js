@@ -1,5 +1,8 @@
 'use strict';
 
+let plrPts = 0 
+let pcPts = 0
+
 const choices = ["rock", "paper", "scissors"];
 
 function getRandInt(min, max){
@@ -7,10 +10,10 @@ function getRandInt(min, max){
 }
 
 function computerPlay(){
-    let rand = getRandInt(0,3)
+    let rand = getRandInt(0,3);
     //console.log(rand)
-    let computerChoice = choices[rand]
-    return computerChoice
+    let computerChoice = choices[rand];
+    return computerChoice;
 }
 
 function playerPlay(){
@@ -32,27 +35,31 @@ function winner(pc, player){
     let playerNum = choices.indexOf(player);
 
     if(pcNum == playerNum){
-        return "tie"
+        return "tie";
     }else if(pcNum-1 == playerNum){
-        return "player"
+        pcPts++;
+        return "pc";
+    }else{
+        plrPts++;
+        return "player";
     }
     }
     
 
 function game(){
     let plr = playerPlay();
-    let ver = verInput(plr)
+    let ver = verInput(plr);
 
     while (ver == false){
         alert("Incorrect input. Try again!")
         plr = playerPlay();
-        ver = verInput(plr)
+        ver = verInput(plr);
     }
 
     let pc = computerPlay();
     console.log("Computer played: "+pc)
     let result = winner(pc, plr);
-    console.log(result)
+    console.log("Winner is "+result);
 }
 
-game()
+game();
