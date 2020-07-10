@@ -1,6 +1,6 @@
 'use strict';
 
-const choices = ["rock","paper", "scissors"];
+const choices = ["rock", "paper", "scissors"];
 
 function getRandInt(min, max){
     return Math.floor(Math.random() * (max - min) + min);
@@ -28,7 +28,14 @@ function verInput(input){
 }
 
 function winner(pc, player){
-    return;
+    let pcNum = choices.indexOf(pc);
+    let playerNum = choices.indexOf(player);
+
+    if(pcNum == playerNum){
+        return "tie"
+    }else if(pcNum-1 == playerNum){
+        return "player"
+    }
     }
     
 
@@ -43,8 +50,9 @@ function game(){
     }
 
     let pc = computerPlay();
-    //console.log("Computer played: "+pc)
-    result = winner(pc, plr);
+    console.log("Computer played: "+pc)
+    let result = winner(pc, plr);
+    console.log(result)
 }
 
 game()
