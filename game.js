@@ -44,7 +44,6 @@ function winner(pc, player){
         return "player";
     }
     }
-    
 
 function game(){
     let plr = playerPlay();
@@ -63,15 +62,20 @@ function game(){
     if(result == "tie"){
         alert("You both tied! No points added.");
     }else if(result == "player"){
-        let beat = plr+" beats "+pc
-        alert("You win, "+beat)
+        let beat = plr+" beats "+pc;
+        alert("You win, "+beat);
     }else if(result == "pc"){
-        let beat = pc+" beats "+plr
-        alert("You lose, "+beat)
+        let beat = pc+" beats "+plr;
+        alert("You lose, "+beat);
     }else{
-        alert("Error")
+        alert("Error");
     }
-    alert("The score is now: \nPlayer "+String(plrPts) + " - " + String(pcPts) + " Computer")
+    alert("Game "+String(i)+": The score is now: \nPlayer "+String(plrPts) + " - " + String(pcPts) + " Computer");
 }
 
-game();
+let i = 0;
+
+while(i < 5){
+    i++;
+    game();
+}
