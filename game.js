@@ -57,9 +57,21 @@ function game(){
     }
 
     let pc = computerPlay();
-    console.log("Computer played: "+pc)
+    //console.log("Computer played: "+pc)
     let result = winner(pc, plr);
-    console.log("Winner is "+result);
+    
+    if(result == "tie"){
+        alert("You both tied! No points added.");
+    }else if(result == "player"){
+        let beat = plr+" beats "+pc
+        alert("You win, "+beat)
+    }else if(result == "pc"){
+        let beat = pc+" beats "+plr
+        alert("You lose, "+beat)
+    }else{
+        alert("Error")
+    }
+    alert("The score is now: \nPlayer "+String(plrPts) + " - " + String(pcPts) + " Computer")
 }
 
 game();
