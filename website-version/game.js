@@ -22,14 +22,6 @@ function playerPlay(){
     return playerChoice;
 }
 
-function verInput(input){
-    if(choices.includes(input) == true){
-        return true;
-    }else{
-        return false;
-    }
-}
-
 function winner(pc, player){
     let pcNum = choices.indexOf(pc);
     let playerNum = choices.indexOf(player);
@@ -47,13 +39,6 @@ function winner(pc, player){
 
 function game(){
     let plr = playerPlay();
-    let ver = verInput(plr);
-
-    while (ver == false){
-        alert("Incorrect input. Try again!")
-        plr = playerPlay();
-        ver = verInput(plr);
-    }
 
     let pc = computerPlay();
     //console.log("Computer played: "+pc)
@@ -70,12 +55,9 @@ function game(){
     }else{
         alert("Error");
     }
-    alert("Game "+String(i)+": The score is now: \nPlayer "+String(plrPts) + " - " + String(pcPts) + " Computer");
+    alert("The score is now: \nPlayer "+String(plrPts) + " - " + String(pcPts) + " Computer");
 }
 
-let i = 0;
-
-while(i < 5){
-    i++;
+while(plrPts < 5 && pcPts < 5){
     game();
 }
