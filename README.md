@@ -1,4 +1,5 @@
 # RPS
-Rock Paper Scissors
+# Rock Paper Scissors
 # Game of rock paper scissors
-# Rock > scissors > paper
+# Prompt version asks for user input using prompts and alerts
+# Website version uses buttons and information on page to show results
