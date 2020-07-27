@@ -16,12 +16,6 @@ function computerPlay(){
     return computerChoice;
 }
 
-function playerPlay(){
-    let playerChoice = prompt("Rock, paper, scissors!"); // Unknown error
-    playerChoice = playerChoice.toLowerCase();
-    return playerChoice;
-}
-
 function winner(pc, player){
     let pcNum = choices.indexOf(pc);
     let playerNum = choices.indexOf(player);
@@ -37,8 +31,7 @@ function winner(pc, player){
     }
     }
 
-function game(){
-    let plr = playerPlay();
+function game(plr){
 
     let pc = computerPlay();
     //console.log("Computer played: "+pc)
@@ -58,6 +51,13 @@ function game(){
     alert("The score is now: \nPlayer "+String(plrPts) + " - " + String(pcPts) + " Computer");
 }
 
-while(plrPts < 5 && pcPts < 5){
-    game();
+const btnSelectors = document.querySelector("#choice");
+btnSelectors.addEventListener('click', onClickMain)
+
+function onClickMain(event){
+    game(event.target.id)
+    if(plrPts >= 5 || pcPts >= 5){
+        console.log("ended")
+    }
+
 }
