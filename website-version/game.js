@@ -6,20 +6,14 @@ let pcPts = 0
 const choices = ["rock", "paper", "scissors"];
 
 function updateScores(result, pc, plr){
-    const getAns = document.querySelector("#results")
-
-    const score = getAns.querySelector("#score")
-    const win = getAns.querySelector("#winner")
-    const info = getAns.querySelector("#info")
-
     if(result == "tie"){
         win.textContent = "You tied";
-        info.textContent = plr +" ties with "+ pc
+        info.textContent = plr +" ties with "+ pc;
     }else if(result == "player"){
-        win.textContent = "You win"
+        win.textContent = "You win";
         info.textContent = plr +" beats "+ pc;
     }else if(result == "pc"){
-        win.textContent= "You lost"
+        win.textContent= "You lost";
         info.textContent = pc +" beats "+ plr;
     }else{
         alert("Error");
@@ -54,22 +48,32 @@ function winner(pc, player){
     }
 
 function game(plr){
-
     let pc = computerPlay();
     //console.log("Computer played: "+pc)
     let result = winner(pc, plr);
-    updateScores(result, pc, plr)
+    updateScores(result, pc, plr);
 }
 
 const btnSelectors = document.querySelector("#choice");
 btnSelectors.addEventListener('click', onClickMain)
 
+const getAns = document.querySelector("#results");
+
+const score = getAns.querySelector("#score");
+const win = getAns.querySelector("#winner");
+const info = getAns.querySelector("#info");
+
 function onClickMain(event){
     if(event.target.id != "choice"){
-        game(event.target.id)
+        game(event.target.id);
     }
     if(plrPts >= 5 || pcPts >= 5){
-        console.log("ended")
+        info.textContent = win.textContent;
+        win.textContent = "Game ended";
+        for(let i = 0; i < 3; i++){
+            let pickedEle = btnSelectors.querySelector("#"+choices[i]);
+            pickedEle.disabled = true
+        }
     }
 
 }
