@@ -5,6 +5,28 @@ let pcPts = 0
 
 const choices = ["rock", "paper", "scissors"];
 
+function updateScores(result, pc, plr){
+    const getAns = document.querySelector("#results")
+
+    const score = getAns.querySelector("#score")
+    const win = getAns.querySelector("#winner")
+    const info = getAns.querySelector("#info")
+
+    if(result == "tie"){
+        win.textContent = "You tied";
+        info.textContent = plr +" ties with "+ pc
+    }else if(result == "player"){
+        win.textContent = "You win"
+        info.textContent = plr +" beats "+ pc;
+    }else if(result == "pc"){
+        win.textContent= "You lost"
+        info.textContent = pc +" beats "+ plr;
+    }else{
+        alert("Error");
+    }
+    score.textContent = "Player "+String(plrPts) + " - " + String(pcPts) + " Computer"
+}
+
 function getRandInt(min, max){
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -36,26 +58,16 @@ function game(plr){
     let pc = computerPlay();
     //console.log("Computer played: "+pc)
     let result = winner(pc, plr);
-    
-    if(result == "tie"){
-        alert("You both tied! No points added.");
-    }else if(result == "player"){
-        let beat = plr+" beats "+pc;
-        alert("You win, "+beat);
-    }else if(result == "pc"){
-        let beat = pc+" beats "+plr;
-        alert("You lose, "+beat);
-    }else{
-        alert("Error");
-    }
-    alert("The score is now: \nPlayer "+String(plrPts) + " - " + String(pcPts) + " Computer");
+    updateScores(result, pc, plr)
 }
 
 const btnSelectors = document.querySelector("#choice");
 btnSelectors.addEventListener('click', onClickMain)
 
 function onClickMain(event){
-    game(event.target.id)
+    if(event.target.id != "choice"){
+        game(event.target.id)
+    }
     if(plrPts >= 5 || pcPts >= 5){
         console.log("ended")
     }
